@@ -41,11 +41,10 @@
     "lodash": "^4.15.0",
     "optimist": "^0.6.1",
     "async": "^2.0.1",
-	"opentype.js": "^1.1.0",
-	"font-manager": "^0.3.0"
+    "opentype.js": "^1.1.0",
+    "system-font-families": "^0.4.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "bundledDependencies": [
     "xmldom",
     "lodash",
