@@ -112,11 +112,13 @@ let PDFParser = (function () {
 
 	//implements transform stream
 	PdfParser.prototype._transform = function (chunk, enc, callback) {
+		console.log("pdfparser._transform");
 		this.chunks.push(Buffer.isBuffer(chunk) ? chunk : new Buffer(chunk, enc));
 		callback();
 	};
 
 	PdfParser.prototype._flush = function(callback) {
+		console.log("pdfparser._flush");
 		this.flushCallback = callback;
 		this.parseBuffer(Buffer.concat(this.chunks));
 	};
