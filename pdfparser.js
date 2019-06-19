@@ -18,7 +18,7 @@ let PDFParser = (function () {
 	//private methods, needs to invoked by [funcName].call(this, ...)
 	let _onPDFJSParseDataReady = function (data) {
 		if (!data) { //v1.1.2: data===null means end of parsed data
-			console.log("PDF parsing completed.");
+			nodeUtil.p2jinfo("PDF parsing completed.");
 			let output = { "formImage": this.data };
 			this.emit("pdfParser_dataReady", output);
 			if (typeof this.flushCallback === 'function') {
@@ -113,13 +113,11 @@ let PDFParser = (function () {
 
 	//implements transform stream
 	PdfParser.prototype._transform = function (chunk, enc, callback) {
-		console.log("pdfparser._transform");
 		this.chunks.push(Buffer.isBuffer(chunk) ? chunk : new Buffer(chunk, enc));
 		callback();
 	};
 
 	PdfParser.prototype._flush = function(callback) {
-		console.log("pdfparser._flush");
 		this.flushCallback = callback;
 		this.parseBuffer(Buffer.concat(this.chunks));
 	};
